@@ -5,6 +5,7 @@ import classes from './UserInputForm.module.css';
 const UserInputForm = (props) => {
 	const [userInput, setUserInput] = useState('');
 
+	// eslint-disable-next-line no-unused-vars
 	let formIsValid = false;
 
 	const formSubmitHandler = event => {
