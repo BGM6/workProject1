@@ -1,0 +1,19 @@
+.addBtn {
+    cursor: pointer;
+    color: #fff;
+    border-radius: 3px;
+    margin: 0.5rem;
+    width: 3rem;
+    outline: none;
+    border: none;
+    padding: 4px;
+    background-color: mediumpurple;
+}
+
+.addBtn:hover {
+    opacity: 0.9;
+}
+
+.addBtn:active {
+    transform: scale(0.98);
+}

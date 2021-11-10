@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import UserInputForm from './components/UserInputForm';
+import ListWeights from './components/ListWeights';
+
+import './index.css';
+
+const App = () => {
+	const [weights, setWeights] = useState([]);
+
+	useEffect(() => {
+		const weights = JSON.parse(localStorage.getItem('weights'));
+		if (weights) {
+			setWeights(weights);
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem('weights', JSON.stringify(weights));
+	}, [weights]);
+
+	const removeWeightsHandler = (id) => {
+		setWeights(weights.filter(w => w.id !== id));
+	};
+
+	const fetchUserInput = input => {
+		setWeights(prevState => {
+			return [...prevState, {
+				weight: input,
+				id: Math.random().toString()
+			}];
+		});
+	};
+
+	console.log(weights)
+	return (
+		<div className="container">
+			<UserInputForm fetchUserInput={fetchUserInput}/>
+			<ListWeights
+				weights={weights}
+				removeWeightsHandler={removeWeightsHandler}
+			/>
+		</div>
+	);
+};
 
 export default App;
