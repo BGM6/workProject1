@@ -13,5 +13,14 @@
 
 .total {
     text-align: center;
+    color: mediumaquamarine;
+    letter-spacing: 2px;
+}
 
+.number {
+    color: mediumvioletred;
+    font-weight: bold;
+}
+
+.weight {
 }
