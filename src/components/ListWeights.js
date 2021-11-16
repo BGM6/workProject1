@@ -10,7 +10,7 @@ const ListWeights = (props) => {
 			<div>
 				<span>
 					<ul>
-				<li>#{idx + 1} - {w.weight}
+				<li><span className={classes.number}>#{idx + 1}</span> - <span className={classes.weight}>{w.weight}</span>
 					<div className={classes.divBtn}>
 						<button className={classes.btn} onClick={() => {
 							props.removeWeightsHandler(w.id);
