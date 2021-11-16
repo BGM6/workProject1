@@ -36,7 +36,6 @@ const UserInputForm = (props) => {
 						value={userInput}
 						onChange={addWeightHandler}
 					/>
-						<button className={classes.addBtn}>Add</button>
 				</form>
 			</div>
 		</div>
