@@ -1,5 +1,14 @@
+html {
+    background-color: #333;
+    color: #fff;
+}
+
 * {
     box-sizing: border-box;
+}
+
+li {
+    list-style: none;
 }
 
 .container {

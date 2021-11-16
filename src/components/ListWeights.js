@@ -1,17 +1,25 @@
 import React, {useEffect, useState} from 'react';
 
+import classes from './ListWeights.module.css';
+
 const ListWeights = (props) => {
 	const [totalWeights, setTotalWeights] = useState(0);
-
 
 	const renderWeights = props.weights.map((w, idx) => {
 		return <div key={idx}>
 			<div>
 				<span>
-				<h4>{idx + 1} - {w.weight} g <button onClick={() => {
-					props.removeWeightsHandler(w.id);
-				}
-				}>delete</button></h4>
+					<ul>
+				<li>#{idx + 1} - {w.weight}
+					<div className={classes.divBtn}>
+						<button className={classes.btn} onClick={() => {
+							props.removeWeightsHandler(w.id);
+						}}>
+						Delete
+					</button>
+					</div>
+				</li>
+						</ul>
 				</span>
 			</div>
 		</div>;
@@ -27,7 +35,7 @@ const ListWeights = (props) => {
 		<div>
 			{renderWeights}
 			<div>
-				<h1>Total: {totalWeights}</h1>
+				<h3 className={classes.total}>Total: {totalWeights}</h3>
 			</div>
 		</div>
 	);
