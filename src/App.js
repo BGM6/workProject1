@@ -50,7 +50,7 @@ const App = () => {
 
 	return (
 		<div>
-			<h1 className="title">Total Grams Calculator</h1>
+			<h1 className="title">Grams Calculator</h1>
 			<div className="container boxShadow">
 				{confirmClear && <Modal cancelClear={cancelClearHandler} confirmClear={clearWeightsHandler}/>}
 				<UserInputForm fetchUserInput={fetchUserInput}/>

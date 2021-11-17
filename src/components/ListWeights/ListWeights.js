@@ -15,7 +15,7 @@ const ListWeights = (props) => {
 					<button className={classes.btn} onClick={() => {
 						props.removeWeightsHandler(w.id);
 					}}>
-						<i className="fas fa-trash"/>
+						<i className="fas fa-trash fa-lg"/>
 					</button>
 				</span></h4>
 			</div>
