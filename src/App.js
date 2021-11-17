@@ -2,11 +2,13 @@ import React, {useState, useEffect} from 'react';
 
 import UserInputForm from './components/UserInputForm/UserInputForm';
 import ListWeights from './components/ListWeights/ListWeights';
+import Modal from './components/UI/Modal/Modal';
 
 import './index.css';
 
 const App = () => {
 	const [weights, setWeights] = useState([]);
+	const [confirmClear, setConfirmClear] = useState(false);
 
 	useEffect(() => {
 		const weights = JSON.parse(localStorage.getItem('weights'));
@@ -35,10 +37,21 @@ const App = () => {
 	const clearWeightsHandler = () => {
 		localStorage.removeItem('weights');
 		setWeights([]);
+		setConfirmClear(false);
 	};
+
+	const modalHandler = () => {
+		setConfirmClear(true);
+	};
+
+	const cancelClearHandler = () => {
+		setConfirmClear(false);
+	};
+
 
 	return (
 		<div className="container boxShadow">
+			{confirmClear && <Modal cancelClear={cancelClearHandler} confirmClear={clearWeightsHandler}/>}
 			<UserInputForm fetchUserInput={fetchUserInput}/>
 			<ListWeights
 				weights={weights}
@@ -47,7 +60,7 @@ const App = () => {
 			<div>
 				<button
 					className="clearWeightBtn"
-					onClick={clearWeightsHandler}
+					onClick={modalHandler}
 				>Clear All
 				</button>
 			</div>

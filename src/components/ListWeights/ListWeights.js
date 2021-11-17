@@ -8,7 +8,8 @@ const ListWeights = (props) => {
 	const renderWeights = props.weights.map((w, idx) => {
 		return <div key={idx}>
 			<div>
-				<h4 className={classes.number}><i className="fas fa-hashtag"/>{idx + 1} - <span className={classes.totalNum}>{w.weight}</span>
+				<h4 className={classes.number}><i className="fas fa-hashtag"/>{idx + 1} - <span
+					className={classes.totalNum}>{w.weight}</span>
 					<span className={classes.divBtn}>
 					<button className={classes.btn} onClick={() => {
 						props.removeWeightsHandler(w.id);
