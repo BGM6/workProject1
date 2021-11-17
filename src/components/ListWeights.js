@@ -32,8 +32,8 @@ const ListWeights = (props) => {
 		<div>
 			{renderWeights}
 			<div>
-				<h3 className={classes.totalNum}><span className={classes.totalText}>Grams Total</span> : {totalWeights}g</h3>
-				<h3 className={classes.totalNum}><span className={classes.totalText}>Lbs Total</span> : {totalLbs.toFixed(2)}lbs
+				<h3 className={classes.totalNum}><span className={classes.totalText}>Grams Total</span> : {totalWeights}</h3>
+				<h3 className={classes.totalNum}><span className={classes.totalText}>Lbs Total</span> : {totalLbs.toFixed(2)}
 				</h3>
 			</div>
 		</div>
