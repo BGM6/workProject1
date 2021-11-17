@@ -30,7 +30,7 @@ const UserInputForm = (props) => {
 				<form onSubmit={formSubmitHandler}>
 					<label htmlFor="weight"/>
 					<input
-						placeholder="Enter Weight"
+						placeholder="Enter weight in grams"
 						id="weight"
 						type="number"
 						value={userInput}
