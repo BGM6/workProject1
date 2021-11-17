@@ -19,7 +19,7 @@ li {
 
 .container {
     border-radius: 5px;
-    max-width: 350px;
+    max-width: 400px;
     overflow: hidden;
     padding: 1rem 2rem;
     margin: 2rem auto auto;
@@ -42,6 +42,7 @@ li {
     cursor: pointer;
     color: #fff;
     padding: 6px 10px;
+    width: 5rem;
 }
 
 @media screen and (max-width: 767px) {
