@@ -1,5 +1,6 @@
 body {
-    background-color: whitesmoke;
+    font-family: 'Roboto', sans-serif;
+    background-color: snow;
     color: #fff;
 }
 
@@ -9,6 +10,11 @@ body {
 
 li {
     list-style: none;
+}
+
+.title {
+    color: mediumvioletred;
+    text-align: center;
 }
 
 .container {

@@ -10,6 +10,7 @@ const App = () => {
 	const [weights, setWeights] = useState([]);
 	const [confirmClear, setConfirmClear] = useState(false);
 
+
 	useEffect(() => {
 		const weights = JSON.parse(localStorage.getItem('weights'));
 		if (weights) {
@@ -50,6 +51,8 @@ const App = () => {
 
 
 	return (
+		<div>
+			<h1 className="title">Grams Calculator</h1>
 		<div className="container boxShadow">
 			{confirmClear && <Modal cancelClear={cancelClearHandler} confirmClear={clearWeightsHandler}/>}
 			<UserInputForm fetchUserInput={fetchUserInput}/>
@@ -64,6 +67,7 @@ const App = () => {
 				>Clear All
 				</button>
 			</div>
+		</div>
 		</div>
 	);
 };

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, Fragment} from 'react';
 
 import classes from './UserInputForm.module.css';
 
@@ -25,7 +25,7 @@ const UserInputForm = (props) => {
 	};
 
 	return (
-		<div>
+		<Fragment>
 			<div className={classes.actions}>
 				<form onSubmit={formSubmitHandler}>
 					<label htmlFor="weight"/>
@@ -38,7 +38,7 @@ const UserInputForm = (props) => {
 					/>
 				</form>
 			</div>
-		</div>
+		</Fragment>
 	);
 };
 
