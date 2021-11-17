@@ -11,9 +11,13 @@
     padding: 5px;
 }
 
-.total {
-    text-align: center;
+.totalNum {
     color: mediumaquamarine;
+    letter-spacing: 2px;
+}
+
+.totalText {
+    color: mediumvioletred;
     letter-spacing: 2px;
 }
 

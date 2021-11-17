@@ -27,12 +27,12 @@ const UserInputForm = (props) => {
 	return (
 		<div>
 			<div className={classes.actions}>
-				<form onSubmit={formSubmitHandler} >
+				<form onSubmit={formSubmitHandler}>
 					<label htmlFor="weight"/>
 					<input
 						placeholder="Enter Weight"
 						id="weight"
-						type="text"
+						type="number"
 						value={userInput}
 						onChange={addWeightHandler}
 					/>
