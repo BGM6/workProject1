@@ -6,7 +6,6 @@
     width: 100%;
 }
 
-
 .addBtn {
     cursor: pointer;
     color: #fff;
@@ -17,7 +16,6 @@
     border: none;
     padding: 10px;
     background-color: mediumpurple;
-
 }
 
 .addBtn:hover {

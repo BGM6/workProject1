@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
-import UserInputForm from './components/UserInputForm';
-import ListWeights from './components/ListWeights';
+import UserInputForm from './components/UserInputForm/UserInputForm';
+import ListWeights from './components/ListWeights/ListWeights';
 
 import './index.css';
 
@@ -32,14 +32,25 @@ const App = () => {
 		});
 	};
 
-	console.log(weights)
+	const clearWeightsHandler = () => {
+		localStorage.removeItem('weights');
+		setWeights([]);
+	};
+
 	return (
-		<div className="container">
+		<div className="container boxShadow">
 			<UserInputForm fetchUserInput={fetchUserInput}/>
 			<ListWeights
 				weights={weights}
 				removeWeightsHandler={removeWeightsHandler}
 			/>
+			<div>
+				<button
+					className="clearWeightBtn"
+					onClick={clearWeightsHandler}
+				>Clear All
+				</button>
+			</div>
 		</div>
 	);
 };
