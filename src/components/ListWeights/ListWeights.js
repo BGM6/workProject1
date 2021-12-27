@@ -46,10 +46,10 @@ const ListWeights = (props) => {
 		<div>
 			{renderWeights}
 			<div>
-				<h3 className={classes.totalNum}><span className={classes.totalText}>Total Lbs</span> : {totalLbs.toFixed(2)  }
-				</h3>
-				<h3 className={classes.totalNum}><span
-					className={classes.totalText}>Total Grams</span> : {totalWeights.toFixed(2)}</h3>
+				<h4 className={classes.totalNum}><span className={classes.totalText}>Total lbs</span> : {totalLbs.toFixed(2)  }
+				</h4>
+				<h4 className={classes.totalNum}><span
+					className={classes.totalText}>Total grams</span> : {totalWeights.toFixed(2)}</h4>
 			</div>
 		</div>
 	);
