@@ -10,7 +10,7 @@ const ListWeights = (props) => {
 		return <div key={idx}>
 			<div>
 				<h4 className={classes.number}><i className="fas fa-hashtag"/>{idx + 1} - <span
-					className={classes.totalNum}>{w.weight}</span>
+					className={classes.totalNum}>{props.toggleWeight ? `${w.weight} lbs` : `${w.weight} g`}</span>
 					<span className={classes.divBtn}>
 					<button className={classes.btn} onClick={() => {
 						props.removeWeightsHandler(w.id);
@@ -23,20 +23,33 @@ const ListWeights = (props) => {
 	});
 
 	useEffect(() => {
-		const total = props.weights.map(w => Number(w.weight))
-			.reduce((acc, currentNum) => acc + currentNum, 0);
-		const totalLbs = total * 0.00220462;
-		setTotalWeights(total);
-		setTotalLbs(totalLbs);
-	}, [props.weights]);
+		if (!props.toggleWeight) {
+			const totalGrams = props.weights.map(w => Number(w.weight))
+				.reduce((acc, currentNum) => acc + currentNum, 0);
+			const totalLbs = totalGrams * 0.00220462;
+			setTotalWeights(totalGrams);
+			setTotalLbs(totalLbs);
+		}
+	}, [props.toggleWeight, props.weights]);
+
+	useEffect(() => {
+		if (props.toggleWeight) {
+			const totalLbs = props.weights.map(w => Number(w.weight))
+				.reduce((acc, currentNum) => acc + currentNum, 0);
+			const totalGrams = totalLbs / 0.00220462;
+			setTotalWeights(totalGrams);
+			setTotalLbs(totalLbs);
+		}
+	}, [props.toggleWeight, props.weights]);
 
 	return (
 		<div>
 			{renderWeights}
 			<div>
-				<h3 className={classes.totalNum}><span className={classes.totalText}>Total Grams</span> : {totalWeights}</h3>
-				<h3 className={classes.totalNum}><span className={classes.totalText}>Total Lbs</span> : {totalLbs.toFixed(2)}
+				<h3 className={classes.totalNum}><span className={classes.totalText}>Total Lbs</span> : {totalLbs.toFixed(2)  }
 				</h3>
+				<h3 className={classes.totalNum}><span
+					className={classes.totalText}>Total Grams</span> : {totalWeights.toFixed(2)}</h3>
 			</div>
 		</div>
 	);

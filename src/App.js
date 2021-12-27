@@ -4,11 +4,14 @@ import UserInputForm from './components/UserInputForm/UserInputForm';
 import ListWeights from './components/ListWeights/ListWeights';
 import Modal from './components/UI/Modal/Modal';
 
+import Button from './components/UI/Button/Button';
+
 import './index.css';
 
 const App = () => {
 	const [weights, setWeights] = useState([]);
 	const [confirmClear, setConfirmClear] = useState(false);
+	const [toggleWeight, setToggleWeight] = useState(false);
 
 	useEffect(() => {
 		const weights = JSON.parse(localStorage.getItem('weights'));
@@ -20,6 +23,18 @@ const App = () => {
 	useEffect(() => {
 		localStorage.setItem('weights', JSON.stringify(weights));
 	}, [weights]);
+
+	useEffect(() => {
+		const conversation = JSON.parse(localStorage.getItem('conversation'));
+		if (conversation === true) {
+			setToggleWeight(true);
+		}
+
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem('conversation', JSON.stringify(toggleWeight));
+	}, [toggleWeight]);
 
 	const removeWeightsHandler = (id) => {
 		setWeights(weights.filter(w => w.id !== id));
@@ -48,14 +63,28 @@ const App = () => {
 		setConfirmClear(false);
 	};
 
+	const toggleWeightHandler = () => {
+		setToggleWeight(!toggleWeight);
+	};
+
+	console.log(toggleWeight);
+
 	return (
 		<div>
-			<h1 className="title">Grams Calculator</h1>
+			<h1 className="title">Weight Calculator</h1>
+			<div style={{textAlign: 'center'}}>
+				<Button
+					onClick={toggleWeightHandler}
+				>{toggleWeight ? 'Switch to Grams' : 'Switch to lbs'}</Button>
+			</div>
 			<div className="container boxShadow">
 				{confirmClear && <Modal cancelClear={cancelClearHandler} confirmClear={clearWeightsHandler}/>}
-				<UserInputForm fetchUserInput={fetchUserInput}/>
+				<UserInputForm
+					toggleWeight={toggleWeight}
+					fetchUserInput={fetchUserInput}/>
 				<ListWeights
 					weights={weights}
+					toggleWeight={toggleWeight}
 					removeWeightsHandler={removeWeightsHandler}
 				/>
 				<div>

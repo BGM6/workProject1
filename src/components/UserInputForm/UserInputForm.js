@@ -10,7 +10,7 @@ const UserInputForm = (props) => {
 
 	const formSubmitHandler = event => {
 		event.preventDefault();
-		const numbers = /^[0-9]+$/;
+		const numbers = /^(\d+(\.\d+)?)$/;
 		if (userInput !== '' && userInput.match(numbers)) {
 			formIsValid = true;
 		} else {
@@ -30,9 +30,11 @@ const UserInputForm = (props) => {
 				<form onSubmit={formSubmitHandler}>
 					<label htmlFor="weight"/>
 					<input
-						placeholder="Enter weight in grams"
+						placeholder={props.toggleWeight ? 'Enter weight in lbs' : 'Enter weight in grams'}
 						id="weight"
 						type="number"
+						pattern="[0-9]+([\.,][0-9]+)?"
+						step="0.01"
 						value={userInput}
 						onChange={addWeightHandler}
 					/>
