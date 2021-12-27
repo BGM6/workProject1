@@ -18,7 +18,7 @@ const App = () => {
 		if (lbs) {
 			setLbs(lbs);
 		}
-	}, [toggleWeight]);
+	}, []);
 
 	useEffect(() => {
 		localStorage.setItem('lbs', JSON.stringify(lbs));
@@ -30,7 +30,7 @@ const App = () => {
 		if (grams) {
 			setGrams(grams);
 		}
-	}, [toggleWeight]);
+	}, []);
 
 	useEffect(() => {
 		localStorage.setItem('grams', JSON.stringify(grams));
@@ -61,7 +61,6 @@ const App = () => {
 		if (conversation === true) {
 			setToggleWeight(true);
 		}
-
 	}, []);
 
 	useEffect(() => {

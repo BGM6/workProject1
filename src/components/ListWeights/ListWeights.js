@@ -63,7 +63,7 @@ const ListWeights = (props) => {
 			{props.toggleWeight ? renderLbs : renderGrams}
 			<div>
 				<h4 className={classes.totalNum}><span className={classes.totalText}>Total lbs</span> : {totalLbs.toFixed(2)}</h4>
-				<h4 className={classes.totalNum}><span className={classes.totalText}>Total grams</span> : {totalGrams.toFixed(0)}</h4>
+				<h4 className={classes.totalNum}><span className={classes.totalText}>Total grams</span> : {totalGrams.toFixed(1)}</h4>
 			</div>
 		</div>
 	);

@@ -41,6 +41,7 @@ li {
 }
 
 .clearWeightBtnGrams {
+    font-size: 1rem;
     border-radius: 5px;
     border: none;
     background-color: mediumvioletred;
@@ -50,6 +51,7 @@ li {
 }
 
 .clearWeightBtnLbs {
+    font-size: 1rem;
     border-radius: 5px;
     border: none;
     background-color: mediumpurple;
