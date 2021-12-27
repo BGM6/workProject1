@@ -7,21 +7,55 @@ import Modal from './components/UI/Modal/Modal';
 import './index.css';
 
 const App = () => {
-	const [weights, setWeights] = useState([]);
+	const [grams, setGrams] = useState([]);
+	const [lbs, setLbs] = useState([]);
 	const [confirmClear, setConfirmClear] = useState(false);
 	const [toggleWeight, setToggleWeight] = useState(false);
 
+	//Lbs Logic
 	useEffect(() => {
-		const weights = JSON.parse(localStorage.getItem('weights'));
-		if (weights) {
-			setWeights(weights);
+		const lbs = JSON.parse(localStorage.getItem('lbs'));
+		if (lbs) {
+			setLbs(lbs);
 		}
-	}, []);
+	}, [toggleWeight]);
 
 	useEffect(() => {
-		localStorage.setItem('weights', JSON.stringify(weights));
-	}, [weights]);
+		localStorage.setItem('lbs', JSON.stringify(lbs));
+	}, [lbs]);
 
+	//Grams Logic
+	useEffect(() => {
+		const grams = JSON.parse(localStorage.getItem('grams'));
+		if (grams) {
+			setGrams(grams);
+		}
+	}, [toggleWeight]);
+
+	useEffect(() => {
+		localStorage.setItem('grams', JSON.stringify(grams));
+	}, [grams]);
+
+	const fetchUserInput = input => {
+		if (!toggleWeight) {
+			setGrams(prevState => {
+				return [...prevState, {
+					grams: input,
+					id: Math.random().toString()
+				}];
+			});
+		} else {
+			setLbs(prevState => {
+				return [...prevState, {
+					lbs: input,
+					id: Math.random().toString()
+				}];
+			});
+		}
+	};
+
+
+	//Conversion Logic
 	useEffect(() => {
 		const conversation = JSON.parse(localStorage.getItem('conversation'));
 		if (conversation === true) {
@@ -34,22 +68,24 @@ const App = () => {
 		localStorage.setItem('conversation', JSON.stringify(toggleWeight));
 	}, [toggleWeight]);
 
-	const removeWeightsHandler = (id) => {
-		setWeights(weights.filter(w => w.id !== id));
+
+	const removeGramsHandler = (id) => {
+		setGrams(grams.filter(w => w.id !== id));
 	};
 
-	const fetchUserInput = input => {
-		setWeights(prevState => {
-			return [...prevState, {
-				weight: input,
-				id: Math.random().toString()
-			}];
-		});
+	const removeLbsHandler = (id) => {
+		setLbs(lbs.filter(w => w.id !== id));
 	};
 
-	const clearWeightsHandler = () => {
-		localStorage.removeItem('weights');
-		setWeights([]);
+	const clearGramsHandler = () => {
+		localStorage.removeItem('grams');
+		setGrams([]);
+		setConfirmClear(false);
+	};
+
+	const clearLbsHandler = () => {
+		localStorage.removeItem('lbs');
+		setLbs([]);
 		setConfirmClear(false);
 	};
 
@@ -69,29 +105,37 @@ const App = () => {
 
 	return (
 		<div>
-			<h1 className="title">Weight Calculator</h1>
+			<h1 className={!toggleWeight ? 'grams' : 'lbs'}>{!toggleWeight ? 'Grams Mode' : 'Lbs Mode'}</h1>
 			<div style={{textAlign: 'center'}}>
 				<button
-					className="toggleBtn"
+					className={toggleWeight ? 'toggleBtnGrams' : 'toggleBtnLbs'}
 					onClick={toggleWeightHandler}
 				>{toggleWeight ? 'Switch to grams' : 'Switch to lbs'}</button>
 			</div>
 			<div className="container boxShadow">
-				{confirmClear && <Modal cancelClear={cancelClearHandler} confirmClear={clearWeightsHandler}/>}
+				{confirmClear &&
+				<Modal cancelClear={cancelClearHandler} confirmClear={!toggleWeight ? clearGramsHandler : clearLbsHandler}/>}
 				<UserInputForm
 					toggleWeight={toggleWeight}
 					fetchUserInput={fetchUserInput}/>
 				<ListWeights
-					weights={weights}
+					grams={grams}
+					lbs={lbs}
 					toggleWeight={toggleWeight}
-					removeWeightsHandler={removeWeightsHandler}
+					removeGramsHandler={removeGramsHandler}
+					removeLbsHandler={removeLbsHandler}
 				/>
 				<div>
-					<button
-						className="clearWeightBtn"
-						onClick={modalHandler}
-					>Clear All
-					</button>
+					{!toggleWeight ?
+						<button
+							className="clearWeightBtnGrams"
+							onClick={modalHandler}
+						>Clear grams</button> :
+						<button
+							className="clearWeightBtnLbs"
+							onClick={modalHandler}
+						>Clear lbs
+						</button>}
 				</div>
 			</div>
 		</div>

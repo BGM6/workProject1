@@ -12,8 +12,13 @@ li {
     list-style: none;
 }
 
-.title {
+.grams {
     color: mediumvioletred;
+    text-align: center;
+}
+
+.lbs {
+    color: mediumpurple;
     text-align: center;
 }
 
@@ -35,17 +40,36 @@ li {
     0 100px 80px rgba(0, 0, 0, 0.2)
 }
 
-.clearWeightBtn {
+.clearWeightBtnGrams {
     border-radius: 5px;
     border: none;
     background-color: mediumvioletred;
     cursor: pointer;
     color: #fff;
-    padding: 6px 10px;
-    width: 5rem;
+    padding: 10px 20px;
 }
 
-.toggleBtn {
+.clearWeightBtnLbs {
+    border-radius: 5px;
+    border: none;
+    background-color: mediumpurple;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+
+.toggleBtnGrams {
+    background-color: mediumvioletred;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 10px;
+    color: #fff;
+    outline: none;
+    font-size: 1.2rem;
+}
+
+.toggleBtnLbs {
     background-color: mediumpurple;
     border: none;
     border-radius: 5px;
