@@ -4,8 +4,6 @@ import UserInputForm from './components/UserInputForm/UserInputForm';
 import ListWeights from './components/ListWeights/ListWeights';
 import Modal from './components/UI/Modal/Modal';
 
-import Button from './components/UI/Button/Button';
-
 import './index.css';
 
 const App = () => {
