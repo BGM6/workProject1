@@ -73,9 +73,10 @@ const App = () => {
 		<div>
 			<h1 className="title">Weight Calculator</h1>
 			<div style={{textAlign: 'center'}}>
-				<Button
+				<button
+					className="toggleBtn"
 					onClick={toggleWeightHandler}
-				>{toggleWeight ? 'Switch to Grams' : 'Switch to lbs'}</Button>
+				>{toggleWeight ? 'Switch to grams' : 'Switch to lbs'}</button>
 			</div>
 			<div className="container boxShadow">
 				{confirmClear && <Modal cancelClear={cancelClearHandler} confirmClear={clearWeightsHandler}/>}

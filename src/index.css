@@ -45,6 +45,16 @@ li {
     width: 5rem;
 }
 
+.toggleBtn {
+    background-color: mediumpurple;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 10px;
+    color: #fff;
+    outline: none;
+    font-size: 1.2rem;
+}
+
 @media screen and (max-width: 767px) {
     input, select, textarea {
         font-size: 16px;
