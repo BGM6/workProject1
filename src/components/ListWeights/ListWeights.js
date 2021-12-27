@@ -10,7 +10,7 @@ const ListWeights = (props) => {
 		return <div key={idx}>
 			<div>
 				<h4 className={classes.number}><i className="fas fa-hashtag"/>{idx + 1} - <span
-					className={classes.totalNum}>{w.grams}g</span>
+					className={classes.totalNum}>{w.grams}</span>
 					<span className={classes.divBtn}>
 					<button className={classes.btn} onClick={() => {
 						props.removeGramsHandler(w.id);
@@ -26,7 +26,7 @@ const ListWeights = (props) => {
 		return <div key={idx}>
 			<div>
 				<h4 className={classes.number}><i className="fas fa-hashtag"/>{idx + 1} - <span
-					className={classes.totalNum}>{w.lbs}lbs</span>
+					className={classes.totalNum}>{w.lbs}</span>
 					<span className={classes.divBtn}>
 					<button className={classes.btn} onClick={() => {
 						props.removeLbsHandler(w.id);
